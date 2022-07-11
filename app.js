@@ -39,7 +39,7 @@ const {
 const bcrypt = require("bcrypt");
 const { log } = require("console");
 const { loadavg } = require("os");
-const PORT = 5000 || process.env.port;
+const PORT = 5000 || process.env.PORT;
 
 app.use(express.static("public"));
 app.use(cors());
