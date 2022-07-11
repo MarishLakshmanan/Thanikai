@@ -74,9 +74,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "frontend/build")));
 }
 
-app.get("/", (req, res) => {
-  res.send("Hello world");
-});
+
 
 app.get("/get-basicinfo-vprp", checkAtoken,checkSubscription, getBasicInfoVprp);
 app.get("/get-basic", checkAtoken,checkSubscription, getBasic);
