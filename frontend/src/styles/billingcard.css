@@ -1,0 +1,52 @@
+.b-card-container{
+    background-color: rgb(26, 28, 41);
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    padding: 25px;
+    box-sizing: border-box;
+    color: rgb(255, 255, 255);
+    border: 3px solid white;
+}
+
+.b-card-top{
+    display: flex;
+    width: 100%;
+    padding-bottom: 10px;
+    
+    align-items: center;
+    border-bottom: 1px solid rgb(66, 66, 66);
+}
+
+.b-card-top img{
+    padding-right: 20px;
+}
+
+.b-card-top h1{
+    font-weight: 400;
+}
+
+.b-card-top p{
+    font-size: 20px;
+    display: inline;
+}
+
+.b-card-bottom h1{
+    font-size: 80px;
+}
+
+.b-card-bottom p{
+    margin-top: 10px;
+}
+
+.b-card-bottom button{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    background-color: #332deb;
+    border: 0;
+    border-radius: 10px;
+    margin-top: 10px;
+    color: white;
+    cursor: pointer;
+}

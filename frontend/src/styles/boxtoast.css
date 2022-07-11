@@ -1,0 +1,75 @@
+.boxtoast-overlay,.inputtoast-overlay{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+}
+
+.boxtoast-container,.inputtoast-container{
+    width: 320px;
+    min-height: 350px;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: aliceblue;
+    padding-top: 0;
+}
+
+.boxtoast-container .verified{
+    border-top: 5px solid #20dd11;
+    width: 320px;
+}
+
+.boxtoast-container .warning{
+    border-top: 5px solid #fcc867;
+    width: 320px;
+}
+
+.boxtoast-container img{
+    width: 45px;
+}
+
+.boxtoast-container p{
+    font-weight: 400;
+}
+
+.boxtoast-container span{
+    text-align: center;
+}
+
+.boxtoast-container div{
+    width: 80%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.boxtoast-container button,.inputtoast-container button{
+    padding: 5px 10px;
+    background-color: transparent;
+    text-decoration: underline;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    width: 100px;
+}
+
+button.t-action-btn{
+    color: white;
+    text-decoration: none;
+}
+

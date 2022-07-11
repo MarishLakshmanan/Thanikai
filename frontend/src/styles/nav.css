@@ -1,0 +1,135 @@
+.nav-container{
+    height: 100vh;
+    margin: 0;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #03045e;
+}
+
+.nav-btn{
+    position:relative;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    width: 35px;
+    color: white;
+    align-self: flex-end;
+    right: 8px;
+    top: 5px;
+}
+
+.nav-items{
+    height: 80%;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.nav-items ul{
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+.nav-items ul li{
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+.nav-items ul li a{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    padding: 8px;
+    box-sizing: border-box;
+    margin: 30px 0;
+    border-radius: 10px;
+}
+
+.nav-items ul li a:hover{
+    background-color: white;
+    color: #332deb;
+    
+}
+
+.nav-heading{
+    margin-left: 10px;
+}
+
+.nav-user{
+    height: 10%;
+    box-sizing: border-box;
+    width: 90%;
+    position: relative;
+    top: 10px;
+}
+
+.nav-user span{
+    width: 90%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.nav-user span p{
+    color: black;
+    font-size: 16px;
+}
+
+.nav-user span span{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 10px;
+}
+
+.nav-user p{
+    color: white;
+    margin-left: 10px;
+}
+
+.nav-user img{
+    width: 40px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+
+.nav-logout{
+    position: relative;
+    width: 90%;
+    height: 40px;
+    border: none;
+    background-color: red;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 8px;
+    display: flex;
+    color: white;
+    align-items: center;
+    cursor: pointer;
+    top: 10px;
+}
+
+.nav-logout p{
+    margin-left: 0;
+}
+
+@media screen and (max-width:1000px) {
+    
+    .nav-container{
+        padding: 0;
+    }
+
+    
+}

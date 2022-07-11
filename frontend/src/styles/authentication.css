@@ -1,0 +1,144 @@
+
+.main-auth-container{
+    width: 100%;
+    height: 90%;
+    border-radius: 7px;
+    box-sizing: border-box;
+    display: flex;
+    position: relative;
+}
+
+.left-auth-container{
+    min-height: 100%;
+    width: 50%;
+    box-sizing: border-box;
+    padding: 30px 20px 10px 0px;
+    overflow: hidden;
+    position: relative;
+
+}
+
+.left-auth-container h1{
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #023e8a;
+    font-size: 50px;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 10%;
+}
+.left-auth-container p{
+    font-weight: 400;
+    font-size: 14px;
+    color: #0077b6;
+    width: 50%;
+    line-height: 150%;
+}
+.left-auth-container button{
+    width: 150px;
+    padding: 10px;
+    border: 2px solid white;
+    background-color: #0077b6;
+    color: white;
+    border-radius: 10px;
+    margin-top: 50px;
+    cursor: pointer;
+}
+
+.right-auth-container{
+    width: 50%;   
+    min-height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+}
+
+.img-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 1s;
+
+}
+
+.img-container img{
+    width: 500px;
+    position: relative;
+    animation: mover 2s infinite;
+}
+
+#auth-move{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 1s;
+}
+
+.toasts-container{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    z-index: 1000;
+}
+
+
+@media screen and (max-width:1080px){
+    .left-auth-container p{
+        width: 80%;
+    }
+
+    .img-container img{
+        width: 400px;
+    }
+}
+
+@media screen and (max-width:800px){
+    .left-auth-container p{
+        width: 100%;
+    }
+
+    .img-container img{
+        width: 300px;
+    }
+}
+
+
+@media screen and (max-width:620px){
+    .main-auth-container{
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .left-auth-container,.right-auth-container{
+        width: 100%;
+    }
+
+    .left-auth-container{
+        min-height: 90%;
+    }
+
+    .left-auth-container p{
+        color: #03045e;
+    }
+    .img-container img{
+        width: 300px;
+    }
+
+    .auth-container{
+        overflow-y: scroll;
+        padding: 20px;
+    }
+
+    .nav-auth-container ul, .nav-billing-container ul {
+        width: 100px;
+    }
+}
+
+@keyframes mover {
+    0% { transform: translateY(0); }
+    50% {transform: translateY(15px);}
+    100% { transform: translateY(0);}
+}

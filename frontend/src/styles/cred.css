@@ -1,0 +1,85 @@
+.cred h1{
+    font-weight: 500;
+}
+
+.cred{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    width: 400px;
+    min-height: 100%;
+    box-sizing: border-box;
+    padding: 0 20px 0;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.move{
+    transform: translateY(-100%);
+}
+
+.cred form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+
+.cred form input{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.cred form label{
+    font-weight: 400;
+    font-size: 14px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.cred form span{
+    position: relative;
+}
+
+.cred form img{
+    position:absolute;
+    right: 10px;
+    cursor: pointer;
+    width: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+.cred span{
+    margin-top: 5px;
+}
+
+.cred span label{
+    font-size: 14px;
+}
+
+.cred button{
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: #0085FF;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    border: 0;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.cred p{
+    font-size: 14px;
+    align-self: center;
+}
+
+.cred a{
+    color: #0085FF;
+}

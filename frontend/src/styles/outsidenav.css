@@ -1,0 +1,58 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto Slab', serif;
+}
+
+.auth-container,.billing-container,.contact-container{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    box-sizing: border-box;
+    padding: 20px 30px 20px;
+}
+
+.auth-container{
+    aspect-ratio:960/300;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url('../resources/auth-bg.svg');
+    
+}
+
+.nav-auth-container,.nav-billing-container,.nav-contact-container{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-auth-container h1,.nav-billing-container h1,.nav-contact-container h1{
+    font-size: 40px;
+    font-family: 'Righteous', cursive;
+    font-weight: 700;
+    color: #03045e;
+
+}
+
+.nav-auth-container ul,.nav-billing-container ul,.nav-contact-container ul{
+    list-style: none;
+}
+
+.nav-auth-container ul > li,.nav-billing-container ul > li,.nav-contact-container ul > li {
+    display: inline-block;
+    margin-left: 10px;
+    width: 36px;
+    height: 36px;
+    background-color: #fff;
+    font-size: 20px;
+    color: #03045e;
+    border-radius: 10px;
+    text-decoration: none;
+    box-sizing: border-box;
+    padding: 5px;
+    border: 2px solid black;
+}

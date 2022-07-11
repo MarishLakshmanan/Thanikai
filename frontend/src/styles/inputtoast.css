@@ -1,0 +1,45 @@
+.inputtoast-container{
+    padding: 20px;
+    border: 5px solid #03045e;
+}
+
+.inputtoast-container form{
+    width: 100%;
+    min-height: 350px;
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+
+.inputtoast-container label{
+    font-size: 13px;
+}
+
+.inputtoast-container input{
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.inputtoast-container .btn-container{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn-container{
+    background-color: #03045e;
+}
+
+.btn-container button {
+    color: white;
+}
+
+.error{
+    color: red;
+    font-size: 12px;
+}

@@ -1,0 +1,143 @@
+.dashboard-nav{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+
+.dashboard-nav img{
+    width: 60px;
+    border-radius: 50%;
+    border: 4px solid black;
+    box-shadow: 0px 5px 10px rgb(126, 126, 126);
+
+}
+
+.dashboard-nav h1{
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.dashboard-nav p{
+    font-size: 15px;
+    padding: 0;
+}
+
+.dashboard-nav span{
+    margin-left: 10px;
+}
+
+.more-options{
+    box-sizing: border-box;
+    position: absolute;
+    top: 40px;
+    right: 10px;
+    width: 200px;
+    height: auto;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 10;
+}
+
+.more-btn{
+    width: 20px;
+    height: 20px;
+    border: 3px solid black;
+    text-align: center;
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: 0px 5px 10px rgb(126, 126, 126);
+    cursor: pointer;
+    display: inline-block;
+    z-index: 8;
+    background-color: white;
+    color: #03045e;
+}
+
+.more-list-1,.more-list-2{
+    box-sizing: border-box;
+    display: flex;
+    transform: translateY(-123%);
+    gap: 5px;
+    align-items: center;
+    transition:transform 2s,color 2s;
+    z-index: -1;
+    color: white; 
+}
+
+.more-list-2{
+    transform: translateY(-223%);
+}
+
+.view{
+    transform: translateY(0);
+    color: black;
+    display: flex;
+}
+
+
+
+.card-container{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    box-sizing: border-box;
+    gap: 15px;
+    justify-content: space-around;
+}
+
+.card{
+    width: 250px;
+    height: 260px;
+    background-color: #03045e;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgb(126, 126, 126);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.card h1{
+    font-size: 18px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.card span{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: white;
+    font-size: 50px;
+    transform: translate(-50%,-30%);
+
+}
+.canvas-card{
+    width: 180px;
+    padding: 5px;
+}
+
+.amount{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bar-chart{
+    width: 90%;
+    text-align: center;
+}

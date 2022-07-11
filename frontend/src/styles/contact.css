@@ -1,0 +1,118 @@
+.contact-container{
+    background-color: #9ec4fb;
+    overflow: hidden;
+}
+
+.main-contact-container{
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90%;
+}
+
+.form-container{
+    position: relative;
+    width: 80%;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: #02044a;
+    display: flex;
+    padding: 10px 40px;
+    justify-content: space-between;
+    height: 100%;
+    align-items: center;
+}
+
+.form-container h1{
+    font-size: 5em;
+    color: white;
+    width: 50%;
+}
+
+.form-container form{
+    background-color: white;
+    width: 40%;
+    height: 85%;
+    border-radius: 10px;
+    padding: 10px 30px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-container label{
+    font-size: 14px;
+    color: rgb(43, 43, 43);
+}
+.form-container input{
+    padding: 10px;
+    border: 2px solid #0c75ff;
+    border-radius: 5px;
+}
+
+.form-container textarea{
+    padding: 10px;
+    border: 2px solid #0c75ff;
+    border-radius: 5px;
+    height: 100px;
+    resize: none;
+}
+
+.form-container form input:nth-child(3){
+    height: 20%;
+}
+
+.form-container button{
+    padding: 10px;
+    width: 50%;
+    align-self: center;
+    background-color: #0c75ff;
+    border-radius: 5px;
+    border: none;
+    color: white;
+}
+
+@media screen and (max-width:1220px) {
+    .form-container h1{
+        font-size: 4em;
+        width: 40%;
+    }
+
+    .form-container form{
+        width: 60%;
+    }
+}
+
+@media screen and (max-width:900px) {
+
+    .form-container{
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .form-container h1{
+        font-size: 2em;
+        width: auto;
+    }
+
+    .form-container form{
+        width: 80%
+    }
+}
+
+@media screen and (max-width:600px){
+    .form-container form{
+        width: 90%;
+    }
+
+    .form-container{
+        width: 400px;
+    }
+
+    .contact-container{
+        padding: 10px;
+    }
+}
