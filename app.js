@@ -39,7 +39,6 @@ const {
 const bcrypt = require("bcrypt");
 const { log } = require("console");
 const { loadavg } = require("os");
-const PORT = 5000 || process.env.PORT;
 
 app.use(express.static("public"));
 app.use(cors());
@@ -481,7 +480,7 @@ app.get("*",(req,res)=>{
   res.sendFile(path.join(__dirname, "client/build/index.html"));
 })
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT || 5000, () => {
   console.log("Server is running");
 });
 
