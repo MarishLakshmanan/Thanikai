@@ -119,10 +119,6 @@ async function checkRtoken(req, res) {
       const subscription = result.rows[0].subscription;
       const id = result.rows[0].id;
   
-      if (subscription === "t") {
-        //check whether the subcription is expired
-      }
-  
       const authenticated = await bcrypt.compare(password, pass);
   
       if (authenticated) {

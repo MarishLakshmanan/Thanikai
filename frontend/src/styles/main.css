@@ -91,11 +91,28 @@
     margin-top: 25px;
 }
 
+
+:root{
+    --name:"Gender"
+}
+
+.Community{
+    --name:"Community"
+}
+.Religion{
+    --name:"Religion"
+}
+
+.Status{
+    --name:"Status"
+}
+
 .m-input-radio:before{
-    content:"Gender";
+    content:var(--name);
     position: absolute;
     top: -20px;
     left: 0px;
+    font-size: 14px;
 }
 
 .m-input-radio input{
@@ -115,7 +132,7 @@
     box-shadow: 0px 5px 10px rgb(161, 161, 161);
 }
 
-.m-issue-container span select,.m-action-container span select{
+.m-issue-container span select,.m-action-container span select,.m-vrp-container span select{
     width: 90%;
     padding: 10px 5px;
     border-radius: 5px;
@@ -186,8 +203,8 @@
     filter: opacity(0.8);
 }
 
-.getVrp select,.getDistrict select{
-    min-width:300px;
+.getVrp input,.getDistrict select{
+    min-width:320px;
     padding: 10px 5px;
     border-radius: 5px;
     border: none;

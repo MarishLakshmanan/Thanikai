@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "../../styles/sdropdown.css"
 
-function SearchableDropdown({placeholder,data,cb,name}){
+function SearchableDropdown({placeholder,data,cb,name,defaultValue}){
     if(typeof data[0]==='object'){
        data = data.map((parano)=>{
            return Object.values(parano)[0];
@@ -25,7 +25,7 @@ function SearchableDropdown({placeholder,data,cb,name}){
 
     return(
         <div className="searchable-container">
-            <input autoComplete="off" name={name} type="text" placholder={placeholder} onChange={filterData} value={value}/>
+            <input autoComplete="off" defaultValue={(defaultValue)?defaultValue:""} name={name} type="text" placholder={placeholder} onChange={filterData} value={value}/>
 
             {filteredData.length!==0 && 
             <div className="search-data-container">

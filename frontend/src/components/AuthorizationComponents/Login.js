@@ -78,7 +78,7 @@ function Login(props) {
           localStorage.setItem("name",res.data.name);
           localStorage.setItem("email",res.data.email);
           callToast("verified","Your are successfully Logged In")
-          if(res.data.subscription==="t"){
+          if(res.data.subscription){
             nav("/");
           }else{
             nav("/billing")

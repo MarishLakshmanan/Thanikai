@@ -3,7 +3,10 @@ const pool =  require("../models/db")
 async function vrp(req,res){
     try {
         const query =
-          "INSERT INTO VPRP (name,secondName,gender,community,education,jobcardno,address,email,mobile,bankName,accountNumber,ifsc,pan,status,block,district,userID) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17)";
+          "INSERT INTO VPRP (name,secondName,gender,religion,community,education,jobcardno,address,email,mobile,bankName,accountNumber,ifsc,pan,status,nativepanchayat,block,district,userID) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19)";
+        if(req.body.email==null || req.body.email===undefined){
+          req.body.email=""
+        }
         var values = Object.values(req.body);
         values.push(req.user.id);
         const result = await pool.query(query, values);
@@ -70,10 +73,10 @@ function createDataAction(data) {
         proceedingNumber: data[k4],
         proceedingDate: data[k5],
         totalamount: data[k6],
-        AmountRecoveredsgs: data[k7],
-        AmountRecoveredhlc: data[k8],
-        BasedOnDocument: data[k9],
-        TokenRecovery: data[k10],
+        AmountRecoveredsgs: (data[k7]===""?0:data[k7]),
+        AmountRecoveredhlc: (data[k8]===""?0:data[k8]),
+        BasedOnDocument: (data[k9]===""?0:data[k9]),
+        TokenRecovery: (data[k10]===""?0:data[k10]),
       };
       arr.push(obj);
     }
@@ -86,6 +89,7 @@ async function issueDetails(req,res){
         const basicID = req.body.basicID;
         const nickname = req.body.basicNickname;
         const count = req.body.count;
+        console.log(req.body);
         for (var i = 0; i < count; i++) {
           const query =
             "INSERT INTO ISSUE (issueType,issueCategory,issueSubCategory,para_no,issue_no,amount,issueStatus,userID,basicID,basicnickname) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)";
@@ -117,7 +121,7 @@ function createDataIssue(data) {
         issueCategory: data[k2],
         issueSubCategory: data[k3],
         parano: data[k4],
-        issue_no: data[k5],
+        issue_no: (data[k5]===""?0:data[k5]),
         amount: data[k6],
         issueStatus: data[k7],
       };
@@ -133,9 +137,9 @@ async function basicInfo(req,res){
         var images = [];
         var ids = [];
         const query =
-          "INSERT INTO BASIC_INFORMATION (nickname,state,district,block,panchayat,startDate,endDate,GSDate,expenditureyear,auditedyear,roundnumber,SAPFromDate,SAPtoDate,WRGbyIA,MRGbyIA,TRGbyIA," +
-          "numberOfWorks,worksVerified,houseHoldsWorked,houseHoldsVerified,noOfpeopleinGS,honorariumExpenses,travelExpenses,p_p_b_Expenses,videoExpenses,otherExpenses,totalExpenses,vrpIDs,userID,images)" +
-          "VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30)";
+          "INSERT INTO BASIC_INFORMATION (nickname,state,district,block,panchayat,startDate,endDate,GSDate,expenditureyear,auditedyear,roundnumber,SAPFromDate,SAPtoDate,UWRGbyIA,SWRGbyIA,MRGbyIA,TRGbyIA," +
+          "numberOfWorks,worksVerified,houseHoldsWorked,houseHoldsVerified,noOfpeopleinGS,noofdaysworked,perdaywages,honorariumExpenses,travelExpenses,p_p_b_Expenses,videoExpenses,otherExpenses,totalExpenses,vrpIDs,userID,images)" +
+          "VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25,$26,$27,$28,$29,$30,$31,$32,$33)";
         var values = Object.values(req.body);
         ids = values.pop();
         if (ids == null || ids === "") {

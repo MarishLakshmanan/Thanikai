@@ -53,7 +53,7 @@ function VrpInfo() {
   return (
     (loading)?<div className="loader" ><ScaleLoader loading={loading} color="#2672ed" /></div>:
     <div className="m-vrp-container">
-      <MainHeader title="VPRPs" cb={addbtn}/>
+      <MainHeader title="VPRPs" cb={addbtn} edit={edit}/>
       <div className="m-vrp-body">
         {edit?<VrpInput setLoading={setLoading} edit={edit} data={editData} n="" setToast={setToast}/>:
         (vprp!=="404")?

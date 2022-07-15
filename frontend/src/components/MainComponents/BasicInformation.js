@@ -1,7 +1,6 @@
 import "../../styles/main.css";
 import { useState, useEffect } from "react";
 import ScaleLoader from "react-spinners/ScaleLoader";
-import axios from "axios";
 import { getFormData } from "../../functions/requestAndResponses";
 import BasicInput from "./subComponents/BasicInput";
 import MainHeader from "./subComponents/MainHeader";
@@ -53,11 +52,11 @@ function BasicInformation() {
     </div>
   ) : (
     <div className="m-basic-container">
+      
       <MainHeader title="Basic-information" cb={addbtn} edit={edit} />
       <div className="m-basic-body">
-        {console.log(data)}
         {edit?<BasicInput vprp={data.vprp} setLoading={setLoading} edit={edit} n="" data={editData} setToast={setToast}/>:
-          (data!=="404" && data!=null)?
+          (data!=="404" && data!=null && data.basic.length!==0)?
           <div className="m-basic-view">
            {data.basic.map((row,index)=>{
              return <BasicInput key={index} vprp={data.vprp} setLoading={setLoading} edit={edit} n={index.toString()} data={row} cb={editBasic} setToast={setToast}/>

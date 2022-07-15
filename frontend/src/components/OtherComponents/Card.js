@@ -1,7 +1,10 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Card({title,count,data,label,n}){
 
+
+    const nav = useNavigate();
     useEffect(()=>{
         const chart  = new window.Chart(
             document.getElementById(`dough-chart${n}`),
@@ -38,13 +41,25 @@ function Card({title,count,data,label,n}){
         }
     }
     
+    function redirect(){
+        if(title==="VPRP"){
+            nav("/vrp-assist")
+        }else if(title==="Basic information"){
+            nav("/basic-information")
+        }else if(title==="Issue"){
+            nav("/issue-details")
+        }else if(title==="Action"){
+            nav("/action-taken")
+        }
+    }
+
     return(
-        <div className="card">
+        <div className="card" onClick={redirect}>
             <h1>{title}</h1>
-            <div className="canvas-container">
+            <div className="canvas-container" >
             <canvas id={`dough-chart${n}`} className="canvas-card" width="300px"></canvas>
             </div>
-            <span>{count}</span>
+            <span style={{display:"none"}}>{count}</span>
         </div>
     )
 }
