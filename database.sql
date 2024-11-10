@@ -1,4 +1,14 @@
--- CREATE DATABASE PROJECTA;
+-- Create the database if it doesn't exist
+DO $$
+BEGIN
+   IF NOT EXISTS (
+      SELECT FROM pg_database
+      WHERE datname = 'thanikai'
+   ) THEN
+      CREATE DATABASE thanikai;
+   END IF;
+END
+$$;
 
 --\l to show all database
 
@@ -6,7 +16,11 @@
 
 --move to ProjectA database =>  \c projecta
 
-CREATE TABLE USERS (
+-- Switch to ProjectA database
+\c thanikai
+
+-- Create USERS table
+CREATE TABLE IF NOT EXISTS USERS (
     id SERIAL PRIMARY KEY NOT NULL,
     name VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
@@ -17,21 +31,21 @@ CREATE TABLE USERS (
     subscription_end DATE
 );
 
-
---Refresh Token
-
-CREATE TABLE tokens(
+-- Create tokens table
+CREATE TABLE IF NOT EXISTS tokens (
     id SERIAL PRIMARY KEY NOT NULL,
     token VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE orderids(
+-- Create orderids table
+CREATE TABLE IF NOT EXISTS orderids (
     id SERIAL PRIMARY KEY NOT NULL,
     order_id VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE BASIC_INFORMATION(
+-- Create BASIC_INFORMATION table
+CREATE TABLE IF NOT EXISTS BASIC_INFORMATION (
     id SERIAL PRIMARY KEY NOT NULL,
     nickname VARCHAR(255) NOT NULL,
     state VARCHAR(255) NOT NULL,
@@ -66,10 +80,11 @@ CREATE TABLE BASIC_INFORMATION(
     vrpIDs INTEGER[],
     userID SERIAL NOT NULL,
     images VARCHAR(255)[],
-    FOREIGN KEY(userID) REFERENCES USERS(id)
+    FOREIGN KEY (userID) REFERENCES USERS(id)
 );
 
-CREATE TABLE VPRP(
+-- Create VPRP table
+CREATE TABLE IF NOT EXISTS VPRP (
     id SERIAL PRIMARY KEY NOT NULL,
     name VARCHAR(255) NOT NULL,
     secondName VARCHAR(255) NOT NULL,
@@ -90,10 +105,11 @@ CREATE TABLE VPRP(
     block VARCHAR(255) NOT NULL,
     district VARCHAR(255) NOT NULL,
     userID SERIAL NOT NULL,
-    FOREIGN KEY(userID) REFERENCES USERS(id)
+    FOREIGN KEY (userID) REFERENCES USERS(id)
 );
 
-CREATE TABLE ISSUE(
+-- Create ISSUE table
+CREATE TABLE IF NOT EXISTS ISSUE (
     id SERIAL PRIMARY KEY NOT NULL,
     para_no INTEGER NOT NULL,
     issue_no INTEGER,
@@ -105,11 +121,12 @@ CREATE TABLE ISSUE(
     userID SERIAL NOT NULL,
     basicID SERIAL NOT NULL,
     basicnickname VARCHAR(255) NOT NULL,
-    FOREIGN KEY(userID) REFERENCES USERS(id),
-    FOREIGN KEY(basicID) REFERENCES BASIC_INFORMATION(id)
+    FOREIGN KEY (userID) REFERENCES USERS(id),
+    FOREIGN KEY (basicID) REFERENCES BASIC_INFORMATION(id)
 );
 
-CREATE TABLE ACTION(
+-- Create ACTION table
+CREATE TABLE IF NOT EXISTS ACTION (
     id SERIAL PRIMARY KEY NOT NULL,
     paraNo INTEGER NOT NULL,
     issueNo INTEGER NOT NULL,
@@ -124,7 +141,6 @@ CREATE TABLE ACTION(
     TokenRecovery INTEGER,
     userID SERIAL NOT NULL,
     basicID SERIAL NOT NULL,
-    FOREIGN KEY(userID) REFERENCES USERS(id),
-    FOREIGN KEY(basicID) REFERENCES BASIC_INFORMATION(id)
+    FOREIGN KEY (userID) REFERENCES USERS(id),
+    FOREIGN KEY (basicID) REFERENCES BASIC_INFORMATION(id)
 );
-
