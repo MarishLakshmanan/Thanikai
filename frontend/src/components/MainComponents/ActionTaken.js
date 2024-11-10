@@ -23,11 +23,7 @@ const defaultOptions = {
 
 function ActionTaken() {
   function addbtn() {
-    if(basic.length!==0){
-      setEdit((pre) => !pre);
-      }else{
-        setToast({state:true,type:"warning",message:"Sorry you can't add an Action taken without any basic information",btntext:"OK",close:setToast,cb:()=>{setToast({state:false})}})
-      }
+    setEdit((pre) => !pre);
   }
   const [loading, setLoading] = useState(true);
   const [basic, setBasic] = useState([]);
@@ -88,7 +84,7 @@ function ActionTaken() {
     </div>
   ) : (
     <div className="m-action-container">
-      <MainHeader title="Action taken report" cb={addbtn} edit={edit} />
+      <MainHeader title="Actions" cb={addbtn} />
       <div className="m-action-body">
         {edit?<ActionInput setLoading={setLoading} basic={basic} setToast={setToast} />:
         (action!=="404")?

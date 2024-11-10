@@ -1,5 +1,6 @@
 
 import VrpInput from "./subComponents/VrpInput";
+import axios from "axios";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import { useEffect, useState } from "react";
 import MainHeader from "./subComponents/MainHeader"
@@ -11,6 +12,7 @@ import {useNavigate} from "react-router-dom"
 
 
 
+axios.defaults.baseURL = process.env.REACT_APP_BACKEND_API;
 
 const defaultOptions = {
   loop: true,
@@ -53,7 +55,7 @@ function VrpInfo() {
   return (
     (loading)?<div className="loader" ><ScaleLoader loading={loading} color="#2672ed" /></div>:
     <div className="m-vrp-container">
-      <MainHeader title="VPRPs" cb={addbtn} edit={edit}/>
+      <MainHeader title="VPRPs" cb={addbtn}/>
       <div className="m-vrp-body">
         {edit?<VrpInput setLoading={setLoading} edit={edit} data={editData} n="" setToast={setToast}/>:
         (vprp!=="404")?

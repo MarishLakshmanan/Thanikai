@@ -21,12 +21,7 @@ const defaultOptions = {
 };
 function IssueDetails() {
   function addbtn() {
-    
-    if(basic.length!==0){
     setEdit((pre) => !pre);
-    }else{
-      setToast({state:true,type:"warning",message:"Sorry you can't add an Issue without any basic information",btntext:"OK",close:setToast,cb:()=>{setToast({state:false})}})
-    }
   }
 
 
@@ -94,7 +89,7 @@ function IssueDetails() {
     </div>
   ) : (
     <div className="m-issue-container">
-      <MainHeader title="Issues" cb={addbtn} edit={edit} />
+      <MainHeader title="Issues" cb={addbtn} />
       <div className="m-issue-body">
         {edit ? (
           <IssueInput setLoading={setLoading} basic={basic} setToast={setToast} />

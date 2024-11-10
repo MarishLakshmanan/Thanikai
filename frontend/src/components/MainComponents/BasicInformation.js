@@ -1,6 +1,7 @@
 import "../../styles/main.css";
 import { useState, useEffect } from "react";
 import ScaleLoader from "react-spinners/ScaleLoader";
+import axios from "axios";
 import { getFormData } from "../../functions/requestAndResponses";
 import BasicInput from "./subComponents/BasicInput";
 import MainHeader from "./subComponents/MainHeader";
@@ -9,6 +10,7 @@ import Lottie from "react-lottie";
 import empty from "../../lotties/empty-anim.json"
 import {useNavigate} from "react-router-dom"
 
+axios.defaults.baseURL = process.env.REACT_APP_BACKEND_API;
 
 function BasicInformation() {
   const [loading, setLoading] = useState(true);
@@ -52,11 +54,11 @@ function BasicInformation() {
     </div>
   ) : (
     <div className="m-basic-container">
-      
       <MainHeader title="Basic-information" cb={addbtn} edit={edit} />
       <div className="m-basic-body">
+        {console.log(data)}
         {edit?<BasicInput vprp={data.vprp} setLoading={setLoading} edit={edit} n="" data={editData} setToast={setToast}/>:
-          (data!=="404" && data!=null && data.basic.length!==0)?
+          (data!=="404" && data!=null)?
           <div className="m-basic-view">
            {data.basic.map((row,index)=>{
              return <BasicInput key={index} vprp={data.vprp} setLoading={setLoading} edit={edit} n={index.toString()} data={row} cb={editBasic} setToast={setToast}/>

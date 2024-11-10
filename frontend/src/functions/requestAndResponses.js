@@ -2,6 +2,7 @@ import axios from "axios";
 import { checkRtoken } from "../functions/authentications";
 import { Navigate } from "react-router-dom";
 
+axios.defaults.baseURL = process.env.REACT_APP_BACKEND_API;
 
 async function sendFormData(nav,path, formData,setToast) {
   try {
@@ -86,7 +87,7 @@ async function getFormData(nav,path, setData, setLoading,setToast) {
             if(setLoading){
             setLoading(false);
             }
-            setToast({state:true,type:"warning",message:"Sorry Something went wrong please try again if you continue to face problem please contact us through Email",btntext:"Contact us",close:setToast,cb:()=>{nav("/contact")}})
+            setToast({state:true,type:"warning",message:"Sorry Something went wrong please try again if you continue to face problem please contact us through Email",btntext:"Reload",close:setToast,cb:()=>{window.location.reload(true)}})
           }
         }
       });
@@ -95,7 +96,7 @@ async function getFormData(nav,path, setData, setLoading,setToast) {
         setLoading(false);
       }
       setData(resA.data.code);
-      setToast({state:true,type:"warning",message:"Sorry! data not found",btntext:"Contact us",close:setToast,cb:()=>{nav("/contact")}})
+      setToast({state:true,type:"warning",message:"Sorry! data not found",btntext:"Reload",close:setToast,cb:()=>{window.location.reload(true)}})
     }else if(resA.data.code==="402"){
       console.log("In 402");
       if (setLoading) {
@@ -108,7 +109,7 @@ async function getFormData(nav,path, setData, setLoading,setToast) {
       if (setLoading) {
         setLoading(false);
       }
-      setToast({state:true,type:"warning",message:"Sorry Something went wrong please try again if you continue to face problem please contact us through Email",btntext:"Contact us",close:setToast,cb:()=>{nav("/contact")}})
+      setToast({state:true,type:"warning",message:"Sorry Something went wrong please try again if you continue to face problem please contact us through Email",btntext:"Reload",close:setToast,cb:()=>{window.location.reload(true)}})
     }
   } catch (e) {
     console.log(e);
@@ -135,7 +136,7 @@ async function editFormData(path, data, setLoading,setToast) {
         if (result.data.code === "200") {
           setToast({state:true,type:"verified",message:"Success",btntext:"OK",close:setToast,cb:()=>{setToast({state:false})}});
         }else{
-          setToast({state:true,type:"warning",message:"Sorry Something went wrong please try again if you continue to face problem please contact us through Email",btntext:"OK",close:setToast,cb:()=>{setToast({state:false})}})
+          setToast({state:true,type:"warning",message:"Sorry Something went wrong please try again if you continue to face problem please contact us through Email",btntext:"Reload",close:setToast,cb:()=>{window.location.reload(true)}})
         }
         setLoading(false);
       }else{
@@ -145,7 +146,7 @@ async function editFormData(path, data, setLoading,setToast) {
     });
   }else{
     setLoading(false);
-    setToast({state:true,type:"warning",message:"Sorry Something went wrong please try again if you continue to face problem please contact us through Email",btntext:"OK",close:setToast,cb:()=>{setToast({state:false})}})
+    setToast({state:true,type:"warning",message:"Sorry Something went wrong please try again if you continue to face problem please contact us through Email",btntext:"Reload",close:setToast,cb:()=>{window.location.reload(true)}})
   }
 }
 
@@ -171,7 +172,7 @@ async function deletedData(path, data, setLoading,setToast) {
         if (result.data.code === "200") {
           setToast({state:true,type:"verified",message:"Success",btntext:"OK",close:setToast,cb:()=>{setToast({state:false})}});
         }else{
-          setToast({state:true,type:"warning",message:"Sorry Something went wrong please try again if you continue to face problem please contact us through Email",btntext:"OK",close:setToast,cb:()=>{setToast({state:false})}})
+          setToast({state:true,type:"warning",message:"Sorry Something went wrong please try again if you continue to face problem please contact us through Email",btntext:"Reload",close:setToast,cb:()=>{window.location.reload(true)}})
         }
         setLoading(false);
       }else{
@@ -181,7 +182,7 @@ async function deletedData(path, data, setLoading,setToast) {
     });
   }else{
     setLoading(false);
-    setToast({state:true,type:"warning",message:"Sorry Something went wrong please try again if you continue to face problem please contact us through Email",btntext:"OK",close:setToast,cb:()=>{setToast({state:false})}})
+    setToast({state:true,type:"warning",message:"Sorry Something went wrong please try again if you continue to face problem please contact us through Email",btntext:"Reload",close:setToast,cb:()=>{window.location.reload(true)}})
   }
 }
 
@@ -211,32 +212,22 @@ async function fetchBasicInfo(nav,e, setLoading, getIDs, images,setToast, edit, 
   setLoading(true);
   const form = document.getElementById("m-basic-form");
   var formData = new FormData(form);
-  let result = getIDs(formData);
+  formData = getIDs(formData);
 
-  if(typeof result==="string"){
-    setLoading(false);
-    setToast({state:true,type:"warning",message:`The VPRP ${result} is not present in the Database`,btntext:"OK",close:setToast,cb:()=>{setToast({state:false})}})
-    return;
-  }
-
-  formData = result;
   var startDate = new Date (formData.get("startdate"));
   var endDate = new Date (formData.get("enddate"));
   var gsDate = new Date (formData.get("gsdate"));
   var sapFromDate = new Date (formData.get("sapfromdate"));
   var sapToDate = new Date (formData.get("saptodate"));
   if(startDate>=endDate){
-    setLoading(false);
     setToast({state:true,type:"warning",message:"The SA Process start and end date are not in manner",btntext:"OK",close:setToast,cb:()=>{setToast({state:false})}})
     return;
   }
   if(endDate>=gsDate){
-    setLoading(false);
     setToast({state:true,type:"warning",message:"The Gram sabha Date is not in correct manner",btntext:"OK",close:setToast,cb:()=>{setToast({state:false})}})
     return;
   }
   if(sapFromDate>=sapToDate){
-    setLoading(false);
     setToast({state:true,type:"warning",message:"The SA dates are not in correct manner",btntext:"OK",close:setToast,cb:()=>{setToast({state:false})}})
     return
   }
@@ -245,8 +236,6 @@ async function fetchBasicInfo(nav,e, setLoading, getIDs, images,setToast, edit, 
     formData.append("images", images[i], images[i].name);
   }
 
-
-  
   if (edit) {
     formData.append("id", id);
     formData.append("className", "basic");

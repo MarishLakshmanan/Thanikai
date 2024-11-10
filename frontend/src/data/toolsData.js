@@ -8,16 +8,15 @@ const basicInformation = {
     {k:"startdate", name: "SA Process Start Date:", type: "date",required:true },
     {k:"enddate", name: "SA Process End Date:", type: "date",required:true },
     {k:"gsdate", name: "Gram Sabha Date", type: "date",required:true },
-    {k:"expenditureyear", name: "Expenditure year", type: "number",required:true },
-    {k:"auditedyear", name: "Audited year", type: "number",required:true },
+    {k:"expenditureyear", name: "Expenditure year", type: "date",required:true },
+    {k:"auditedyear", name: "Audited year", type: "date",required:true },
     {k:"roundnumber", name: "Round Number", type: "number",required:true },
   ],
   2: [
     {k:"sapfromdate", name: "SA Period From Date:", type: "date",required:true },
     {k:"saptodate", name: "SA Period To Date:", type: "date",required:true },
-    {k:"uwrgbyia", name: "Unskilled Wage Record Given by implementing Agency Rs:", type: "number",required:true,change:"sac" },
-    {k:"swrgbyia", name: "Skilled Wage Record Given by implementing Agency Rs:", type: "number",required:true,change:"sac" },
-    {k:"mrgbyia", name: "Material Records Given by implementing Agency Rs:", type: "number",required:true,change:"sac" },
+    {k:"wrgbyia", name: "Wage Records Given by implementing Agency Rs:", type: "number",required:true },
+    {k:"mrgbyia", name: "Material Records Given by implementing Agency Rs:", type: "number",required:true },
     {k:"trgbyia", name: "Total Records Given by implementing Agency Rs:", type: "number",required:true },
   ],
   3: [
@@ -30,13 +29,11 @@ const basicInformation = {
     {k:"noofpeopleings", name: "Number of people participated in gram Sabha:", type: "number",required:true },
   ],
   6: [
-    {k:"noofdaysworked", name: "No.of.days worked:", type: "number" ,required:true,change:"exp"},
-    {k:"perdaywages", name: "Per day wages:", type: "number" ,required:true,change:"exp"},
     {k:"honorariumexpenses", name: "VPRP Honorarium Expenses:", type: "number" ,required:true},
-    {k:"travelexpenses", name: "VRP travel Expenses:", type: "number",required:true,change:"expt"},
-    {k:"p_p_b_expenses", name: "Printing/Photocopy/Binding Expenses:", type: "number",required:true,change:"expt" },
-    {k:"videoexpenses", name: "Videography Expenses:", type: "number",required:true,change:"expt" },
-    {k:"otherexpenses", name: "Other Expenses:", type: "number",required:true,change:"expt" },
+    {k:"travelexpenses", name: "VRP travel Expenses:", type: "number",required:true },
+    {k:"p_p_b_expenses", name: "Printing/Photocopy/Binding Expenses:", type: "number",required:true },
+    {k:"videoexpenses", name: "Videography Expenses:", type: "number",required:true },
+    {k:"otherexpenses", name: "Other Expenses:", type: "number",required:true },
     {k:"totalexpenses", name: "Total Expenses:", type: "number",required:true },
   ],
 };
@@ -44,10 +41,9 @@ const basicInformation = {
 const vrpInfo = [
   {k:"name", name: "VPRP name", type: "text",required:true },
   {k:"secondname", name: "Father/Husband name", type: "text",required:true },
-  {k:"gender", name: "Gender", type: "radio", values: ["Male", "Female", "Transgender"],required:true },
-  {k:"religion", name: "Religion", type: "radio",values:["Hindu","Muslim","Christian"] ,required:true },
-  {k:"community", name: "Community", type: "radio",values: ["OC","OBC","SC","ST"],required:true },
-  {k:"education", name: "Educational Qualification", type: "select", values:["Above 8","SSLC","HSC","UG","SSLC","PG Degree","Others"], required:true },
+  {k:"gender", name: "gender", type: "radio", values: ["Male", "Female", "Transgender"],required:true },
+  {k:"community", name: "Community", type: "text",required:true },
+  {k:"education", name: "Educational Qualification", type: "text",required:true },
   {k:"jobcardno", name: "Job Card no", type: "text",required:true },
   {k:"address", name: "Full Address", type: "text",required:true },
   {k:"email", name: "Email Address", type: "email" },
@@ -56,10 +52,9 @@ const vrpInfo = [
   {k:"accountnumber", name: "Account Number", type: "text",required:true },
   {k:"ifsc", name: "IFSC code", type: "text",required:true },
   {k:"pan", name: "PAN number", type: "text",required:true },
-  {k:"status", name: "VPRP Status", type: "radio",values:["Active","Inactive"],required:true },
-  {k:"nativepanchayat", name: "Native Panchayat", type: "text",required:true },
+  {k:"status", name: "VPRP Status", type: "text",required:true },
   {k:"block", name: "Native Block", type: "text",required:true },
-  {k:"district", name: "District", type: "text",required:true }
+  {k:"district", name: "District", type: "text",required:true },
 ];
 
 const issueInfo = [
@@ -75,10 +70,10 @@ const actionInfo = [
   {k:"proceedingNumber", name: "Proceeding no", type: "number",required:true },
   {k:"proceedingDate", name: "Proceeding date", type: "date",required:true },
   {k:"totalamount", name: "Total Amount", type: "number",required:true },
-  {k:"AmountRecovered(sgs)", name: "Amount recovered(SGS)", type: "number",required:false },
-  {k:"AmountRecovered(hlc)", name: "Amount recovered(HLC)", type: "number",required:false },
-  {k:"BasedOnDocument", name: "Based on Document", type: "number",required:false },
-  {k:"TokenRecovery", name: "Token Recovery", type: "number",required:false },
+  {k:"AmountRecovered(sgs)", name: "Amount recovered(SGS)", type: "number",required:true },
+  {k:"AmountRecovered(hlc)", name: "Amount recovered(HLC)", type: "number",required:true },
+  {k:"BasedOnDocument", name: "Based on Document", type: "number",required:true },
+  {k:"TokenRecovery", name: "Token Recovery", type: "number",required:true },
 ];
 
 const issueTypes = [
@@ -419,9 +414,6 @@ const issueSubCategories = [
 ];
 
 const columns = [
-  {Header:"BI name",accessor:"nickname",Cell:EditableCell},
-  {Header:"Expenditure Year",accessor:"expenditureyear",Cell:EditableCell},
-  {Header:"Audited Year",accessor:"auditedyear",Cell:EditableCell},
   {Header:"Para no",accessor:"para_no",Cell:EditableCell},
   {Header:"Issue no",accessor:"issue_no"},
   {Header:"Issue type",accessor:"issuetype",disableFilters:true,Cell:EditableCell},

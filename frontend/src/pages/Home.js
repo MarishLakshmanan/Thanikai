@@ -1,3 +1,4 @@
+import axios from "axios";
 import Nav from "../components/NavComponents/Nav";
 import { useState,useEffect } from "react";
 import { Outlet } from "react-router-dom";
@@ -5,6 +6,7 @@ import {motion} from "framer-motion"
 import { GiHamburgerMenu } from "react-icons/gi";
 import logo from "../resources/logo.png"
 
+axios.defaults.baseURL = process.env.REACT_APP_BACKEND_API;
 
 function Home(){
 

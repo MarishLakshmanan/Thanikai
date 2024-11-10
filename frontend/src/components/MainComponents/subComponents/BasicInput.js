@@ -10,18 +10,16 @@ import { deletedData } from "../../../functions/requestAndResponses";
 import { RiEdit2Fill } from "react-icons/ri";
 import { MdDelete, MdArrowDropDownCircle } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-import SearchableDropdown from "../../InputComponents/SearchableDropdown";
 
 function BasicInput({ vprp, setLoading, edit, data, cb, n, setToast }) {
   const [images, setImages] = useState([]);
-  const [vrpId, setvrpIds] = useState([]);
+  const [vrpName, setvrpName] = useState([]);
   const [basicState, setBasicState] = useState(0);
   const [open, setOpen] = useState(false);
   const nav = useNavigate();
-  const [vprpList,setVprpList]=useState([]);
 
   useEffect(() => {
-    
+    console.log(vprp);
     if (data) {
       populateForm();
     }
@@ -46,12 +44,11 @@ function BasicInput({ vprp, setLoading, edit, data, cb, n, setToast }) {
         for (var i = 0; i < value.length; i++) {
           for (var j = 0; j < vprp.length; j++) {
             if (value[i] === vprp[j].id) {
-              let id = "vrpIDs" + (Math.random() * 1000).toString();
-              setVprpList(vprpList.concat(<SearchableDropdown defaultValue={vprp[j].row} placeholder={"Enter mobile number to search"} data={vprp} name={id} />))
-              setvrpIds((pre) => {
-                return [...pre,id];
-              });
-              
+              const container = document.querySelector("#add-vprp-view");
+              const input = document.createElement("input");
+              input.value = vprp[j].row;
+              container.append(input);
+              input.readOnly = true;
             }
           }
         }
@@ -114,50 +111,53 @@ function BasicInput({ vprp, setLoading, edit, data, cb, n, setToast }) {
   }
 
   function addVrp(e) {
-    let id = "vrpIDs" + (Math.random() * 1000).toString();
-    setVprpList(vprpList.concat(<SearchableDropdown placeholder={"Enter mobile number to search"} data={vprp} name={id} />))
-    setvrpIds((pre) => {
-      return [...pre,id];
+    e.preventDefault();
+    const container = document.querySelector(".m-basic-inputs.getVrp");
+    const select = document.createElement("select");
+    select.name = "vrpIDs" + (Math.random() * 1000).toString();
+    select.required = true;
+
+    vprp.map((data, index) => {
+      const option = document.createElement("option");
+      option.value = data.id;
+      option.innerText = data.row;
+      option.required = true;
+      select.appendChild(option);
+      return true;
     });
-    
+
+    setvrpName((pre) => {
+      return [...pre, select.name];
+    });
+
+    container.appendChild(select);
   }
 
-  async function removeVrp(e) {
+  function removeVrp(e) {
     e.preventDefault();
-    
-    if(vprpList.length>=0){
-      vrpId.pop();
-      setvrpIds(vrpId)
-      console.log(vprpList.pop());
-      setVprpList(new Array(...vprpList))
+    const container = document.querySelector(".m-basic-inputs.getVrp");
+    if (container.childElementCount > 1) {
+      const child = document.querySelector(".m-basic-inputs.getVrp").lastChild;
+      setvrpName((pre) => {
+        return pre.filter((data) => {
+          return data !== child.name;
+        });
+      });
+      container.removeChild(child);
     }
-
   }
 
   function getIDs(formData) {
     const selectedIds = [];
-    let allFound = true;
-    let name;
-    vrpId.forEach((data, index) => {
-      let value =  formData.get(String(data));
-      let found = false;
-      for(var i=0;i<vprp.length;i++){
-        if(vprp[i].row===value){
-          selectedIds.push(vprp[i].id);
-          found=true;
-          break;
-        }
-      }
-      if(!found){
-        allFound=false;
-        name = value;
-        return;
-      }
+    console.log(vrpName);
+    vrpName.map((data, index) => {
+      selectedIds.push(formData.get(data));
       formData.delete(data);
+      return true;
     });
+    console.log(selectedIds);
     formData.append("vrpIDs", selectedIds);
-    return allFound?formData:name;
-
+    return formData;
   }
 
   const variants = {
@@ -307,8 +307,6 @@ function BasicInput({ vprp, setLoading, edit, data, cb, n, setToast }) {
                   key={index}
                   name={data.name}
                   type={data.type}
-                  required={data.required}
-                  change={data.change}
                   n={n}
                 />
               );
@@ -325,8 +323,6 @@ function BasicInput({ vprp, setLoading, edit, data, cb, n, setToast }) {
                   key={index}
                   name={data.name}
                   type={data.type}
-                  required={data.required}
-
                   n={n}
                 />
               );
@@ -343,8 +339,6 @@ function BasicInput({ vprp, setLoading, edit, data, cb, n, setToast }) {
                   key={index}
                   name={data.name}
                   type={data.type}
-                  required={data.required}
-                  change={data.change}
                   n={n}
                 />
               );
@@ -383,7 +377,7 @@ function BasicInput({ vprp, setLoading, edit, data, cb, n, setToast }) {
           </div>
         </div>
         <div className="m-inputs-overlay">
-          <h3>Social Audit Resource Person who Facilated this audit (VPRP)</h3>
+          <h3>Social Audit Resource Person who Facilated this audit</h3>
           <div className="m-basic-inputs getVrp">
             {!edit ? (
               <span id="add-vprp-view"></span>
@@ -397,7 +391,6 @@ function BasicInput({ vprp, setLoading, edit, data, cb, n, setToast }) {
                 </button>
               </span>
             )}
-            {vprpList}
           </div>
         </div>
         <div className="m-inputs-overlay">
@@ -410,8 +403,6 @@ function BasicInput({ vprp, setLoading, edit, data, cb, n, setToast }) {
                   key={index}
                   name={data.name}
                   type={data.type}
-                  required={data.required}
-                  change={data.change}
                   n={n}
                 />
               );

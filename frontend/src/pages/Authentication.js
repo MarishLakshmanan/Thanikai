@@ -72,13 +72,14 @@ function Authentication() {
         <div className="left-auth-container">
           <h1>SIMPLIFY AUDITING</h1>
           <p>
-            Effortlessly manage your survey data with a secure, user-friendly
-            platform designed specifically for social auditors in India. Track,
-            analyze, and organize your insights with ease, all in one place. Our
-            application offers tailored features, secure access with JWT, and a
-            seamless payment process to unlock premium tools. Built with you in
-            mind, the Auditor’s Dashboard ensures data management is efficient,
-            accurate, and straightforward.
+            Welcome to the Auditor’s Dashboard! Effortlessly manage your survey
+            data with a secure, user-friendly platform designed specifically for
+            social auditors in India. Track, analyze, and organize your insights
+            with ease, all in one place. Our application offers tailored
+            features, secure access with JWT, and a seamless payment process to
+            unlock premium tools. Built with you in mind, the Auditor’s
+            Dashboard ensures data management is efficient, accurate, and
+            straightforward.
           </p>
           <button onClick={changeInput}>Get Started</button>
         </div>

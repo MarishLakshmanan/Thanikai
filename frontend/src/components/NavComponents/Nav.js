@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import avatar from "../../resources/avatar1.png"
 
 import axios from "axios";
+axios.defaults.baseURL = process.env.REACT_APP_BACKEND_API;
 
 
 

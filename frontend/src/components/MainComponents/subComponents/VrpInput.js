@@ -17,29 +17,13 @@ function VrpInput({ setLoading, data, edit, n, cb ,setToast}) {
     if(data)populateForm(data)
   }, []);
 
-
-
   async function populateForm(data) {
-
-   
 
     for (var [key, value] of Object.entries(data)) {
       
-
       const element = await document.getElementById(key + n);
-      if (key === `gender` || key === `religion` || key===`community`|| key==="status") {
+      if (key === `gender`) {
         document.getElementById(value + n).checked = true;
-      }else if(key==="education"){
-        let values = ["Above 8","SSLC","HSC","UG","SSLC","PG Degree","Others"]
-        let index = 0;
-        values.forEach((data,i)=>{
-          if(data===value){
-            index=i
-          }
-        })
-        if(element){
-          element.options.selectedIndex=index;
-        }
       }
       if (element) {
         element.setAttribute("value", value);
